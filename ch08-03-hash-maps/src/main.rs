@@ -1,3 +1,4 @@
+use ch08_03_hash_maps::{pig_latin::convert_to_pig_latin, statistics};
 use std::collections::HashMap;
 
 fn main() {
@@ -135,4 +136,28 @@ fn main() {
     // A hasher is any type that implements the `BuildHasher` trait.
     // You don’t need to implement one from scratch — crates.io provides many ready-made hashers.
     // Traits and their implementations are covered in Chapter 10.
+
+    //--------------------------------------------------------------------------------------------
+    excercise1();
+    excercise2();
+}
+
+fn excercise1() {
+    // Given a list of integers, use a vector and return the median (when sorted, the value in the middle position) and mode (the value that occurs most often; a hash map will be helpful here) of the list.
+
+    let mut integers = vec![3, 4, 8, 2, 2, 5, 0, 9, 6, 6, 1, 10, 2];
+    let median = statistics::median(&mut integers);
+    let (mode, count) = statistics::mode(&mut integers);
+
+    println!("{integers:?}, median = {median}, mode = {mode} with count : {count}");
+}
+
+fn excercise2() {
+    // Convert strings to Pig Latin. The first consonant of each word is moved to the end of the word and ay is added, \
+    // so first becomes irst-fay. Words that start with a vowel have hay added to the end instead (apple becomes apple-hay). Keep in mind the details about UTF-8 encoding!
+    let str = "first apple cbnm because".to_string();
+
+    let pig_latin_str = convert_to_pig_latin(&str);
+
+    println!("{pig_latin_str}");
 }
