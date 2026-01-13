@@ -1,4 +1,4 @@
-use ch08_03_hash_maps::{pig_latin::convert_to_pig_latin, statistics};
+use ch08_03_hash_maps::{employee_directory, pig_latin, statistics};
 use std::collections::HashMap;
 
 fn main() {
@@ -140,6 +140,7 @@ fn main() {
     //--------------------------------------------------------------------------------------------
     excercise1();
     excercise2();
+    excercise3();
 }
 
 fn excercise1() {
@@ -157,7 +158,15 @@ fn excercise2() {
     // so first becomes irst-fay. Words that start with a vowel have hay added to the end instead (apple becomes apple-hay). Keep in mind the details about UTF-8 encoding!
     let str = "first apple cbnm because".to_string();
 
-    let pig_latin_str = convert_to_pig_latin(&str);
+    let pig_latin_str = pig_latin::convert_to_pig_latin(&str);
 
     println!("{pig_latin_str}");
+}
+
+fn excercise3() {
+    // Using a hash map and vectors, create a text interface to allow a user to add employee names to a department in a company;
+    // for example, “Add Sally to Engineering” or “Add Amir to Sales.”
+    // Then, let the user retrieve a list of all people in a department or all people in the company by department, sorted alphabetically.
+
+    employee_directory::employee_directory_program();
 }
